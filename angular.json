@@ -30,7 +30,11 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json",
+            "allowedCommonJsDependencies": [
+            "@techstark/opencv-js"
+            ]
           },
           "configurations": {
             "production": {

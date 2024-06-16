@@ -5,6 +5,8 @@ import { createNodeByType, createNodeShape } from '../nodes/node-helper';
 import { Connection } from '../connection/connection';
 import {Node} from "../nodes/node";
 import {App} from "../app";
+import workflowJson from '../../examples/token-generator/workflow.json';
+import imageJson from '../../examples/token-generator/workflow.json';
 
 export function resetGraphFromFile(graph: dia.Graph, file: ImpFile) {
     graph.resetCells([]);
@@ -83,15 +85,22 @@ export function getFileFromGraph(graph: dia.Graph): ImpFile {
 }
 
 export async function loadExample(graph: dia.Graph, example: string) {
-    const file = await fetch(`examples/${example}/workflow.imp`);
-    const impFile = JSON.parse(await file.text());
-    resetGraphFromFile(graph, impFile);
 
-    const imagesFile = await fetch(`examples/${example}/images.json`);
-    const images: { [key: string]: string } = JSON.parse(await imagesFile.text());
+    // const file = await fetch(`examples/${example}/workflow.imp`);
+    // const impFile = JSON.parse(await file.text());
+    // resetGraphFromFile(graph, impFile);
+
+  resetGraphFromFile(graph, workflowJson);
+
+
+   // const imagesFile = await fetch(`examples/${example}/images.json`);
+    //const images: { [key: string]: string } = JSON.parse(await imagesFile.text());
+
+    const images: { [key: string]: string } = imageJson as any;
+
 
     const uploads = graph.getCells().filter(c => c.get('type') === 'processor.Upload');
-    uploads.forEach(u => {
+  uploads.forEach(u => {
         u.prop('properties/url', `examples/${example}/images/${images[u.get('name')]}`);
         App.processor.process(u.id);
     });

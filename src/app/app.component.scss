@@ -1,3 +1,17 @@
+//@import "~@joint/plus/joint-plus.css";
+
+@import '../css/fonts.scss';
+@import '../css/theme.scss';
+@import '../css/toolbar.scss';
+@import '../css/stencil.scss';
+@import '../css/inspector.scss';
+@import '../css/shapes.scss';
+@import '../css/selection.scss';
+@import '../css/context-toolbar.scss';
+@import '../css/navigator.scss';
+@import '../css/dialog.scss';
+@import '../css/popup.scss';
+@import '../css/help.scss';
 .joint-app {
   position: relative;
   width: 100%;

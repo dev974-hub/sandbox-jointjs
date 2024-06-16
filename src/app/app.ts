@@ -265,7 +265,7 @@ export class App {
         this.setInteractivity();
         this.setContextToolbar();
 
-        (<any>cv).onRuntimeInitialized = () => {
+        (cv as any).onRuntimeInitialized = () => {
             App.cvService = new CVService(() => {
                 loadExample(this.graph, 'token-generator').then(() => {
                     this.cmd.reset();

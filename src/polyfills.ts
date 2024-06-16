@@ -51,3 +51,6 @@ import 'zone.js';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+ (window as any).global = window;
+//import * as cv from '@techstark/opencv-js';
+//(window as any).cv = cv;
